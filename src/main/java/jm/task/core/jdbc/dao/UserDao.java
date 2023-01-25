@@ -10,9 +10,10 @@ public interface UserDao {
 
     void dropUsersTable();
 
-    void saveUser(String name, String lastName, byte age) throws SQLException;
+    void saveUser(User user);
 
-    void removeUserById(long id);
+
+    void removeUserById(User user);
 
     List<User> getAllUsers() throws SQLException;
 

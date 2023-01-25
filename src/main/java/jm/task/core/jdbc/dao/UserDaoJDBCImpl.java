@@ -2,7 +2,7 @@ package jm.task.core.jdbc.dao;
 
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
-
+/*
 
 import javax.swing.plaf.nimbus.State;
 import java.sql.*;
@@ -14,7 +14,7 @@ import static jm.task.core.jdbc.util.Util.getConnection;
 
 public class UserDaoJDBCImpl implements UserDao {
 
-    Statement statement = null;
+    Statement = null;
 
     public void createUsersTable() {
         try (Connection con = getConnection(); Statement statement = getConnection().createStatement()){
@@ -94,4 +94,6 @@ public class UserDaoJDBCImpl implements UserDao {
             e.printStackTrace();
         }
     }
-}
+
+   */
+
