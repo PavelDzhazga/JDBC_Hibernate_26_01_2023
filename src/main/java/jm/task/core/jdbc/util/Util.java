@@ -24,11 +24,11 @@ public class Util {
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
 
-    /*public static Connection getConnection() {
+    public static Connection getConnection() {
         Connection connection;
         try {
-            Class.forName(driver);
-            connection = DriverManager.getConnection(url, userName, password);
+            Class.forName(DRIVER);
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement statement = connection.createStatement();
             if (!connection.isClosed()) {
                 System.out.println("Connection good");
@@ -39,7 +39,7 @@ public class Util {
             throw new RuntimeException("Connection ERROR");
         }
         return connection;
-    }*/
+    }
 
 
     //Hibarnate
@@ -63,6 +63,7 @@ public class Util {
 
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(User.class);
+
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();

@@ -50,13 +50,13 @@ import java.util.List;
 
     @Override
     public void saveUser(User user) {
-        Session session = Util.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
+        try(Session session = Util.getSessionFactory().openSession()) {
+            session.beginTransaction();
 
-        session.save(user);
-        transaction.commit();
-        session.close();
-
+            session.save(user);
+            session.getTransaction().commit();
+            session.close();
+        }
     }
 
     @Override
