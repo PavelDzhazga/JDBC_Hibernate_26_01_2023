@@ -2,7 +2,6 @@ package jm.task.core.jdbc.dao;
 
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
-import net.bytebuddy.agent.builder.AgentBuilder;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -16,24 +15,27 @@ import java.util.List;
 
     }
 
-
+//ok
     @Override
     public void createUsersTable() {
         Session session = Util.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
 
-        String sql = "CREATE TABLE IF NOT EXISTS users " +
-                "(id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY, " +
-                "name VARCHAR(50) NOT NULL, lastName VARCHAR(50) NOT NULL, " +
-                "age TINYINT NOT NULL)";
+        String sql = "CREATE TABLE `dzhazgappshema`.`users` (\n" +
+                "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
+                "  `name` VARCHAR(45) NOT NULL,\n" +
+                "  `lastname` VARCHAR(45) NOT NULL,\n" +
+                "  `age` INT NOT NULL,\n" +
+                "  PRIMARY KEY (`id`),\n" +
+                "  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE)";
 
-        Query query = session.createSQLQuery(sql).addEntity(User.class);
+        Query query = session.createSQLQuery(sql);
 
         transaction.commit();
         session.close();
 
     }
-
+//ok
     @Override
     public void dropUsersTable() {
         Session session = Util.getSessionFactory().openSession();
@@ -41,7 +43,7 @@ import java.util.List;
 
        String sql = "DROP TABLE IF EXISTS users";
 
-        Query query = session.createSQLQuery(sql).addEntity(User.class);
+        Query query = session.createSQLQuery(sql);
         transaction.commit();
         session.close();
     }
@@ -54,6 +56,7 @@ import java.util.List;
         session.save(user);
         transaction.commit();
         session.close();
+
     }
 
     @Override
@@ -69,15 +72,19 @@ import java.util.List;
 
     @Override
     public List<User> getAllUsers() {
-        String sql = "SELECT * FROM users";
         Session session = Util.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        List<User> users = (List<User>) session.createSQLQuery(sql)
-                .addEntity(User.class)
-                .list();
+
+        String sql = "SELECT * FROM users";
+
+        session.getSession();
+        Query query = session.createNativeQuery(sql);
+        List<User> userList = query.list();
+
         transaction.commit();
         session.close();
-        return users;
+
+        return userList;
     }
 
     @Override
@@ -86,7 +93,7 @@ import java.util.List;
         Transaction transaction = session.beginTransaction();
 
         String sql = "DELETE FROM users";
-        session.createSQLQuery(sql).addEntity(User.class);
+        session.createSQLQuery(sql);
         transaction.commit();
         session.close();
     }

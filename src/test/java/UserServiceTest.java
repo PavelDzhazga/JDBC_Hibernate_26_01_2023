@@ -13,6 +13,7 @@ public class UserServiceTest {
     private final String testLastName = "Ivanov";
     private final byte testAge = 5;
 
+    User userTest = new User(testName, testLastName, testAge);
 
     @Test
     public void dropUsersTable() {
@@ -39,7 +40,7 @@ public class UserServiceTest {
         try {
             userService.dropUsersTable();
             userService.createUsersTable();
-            userService.saveUser(new User(testName, testLastName, testAge));
+            userService.saveUser(userTest);
 
             User user = userService.getAllUsers().get(0);
 
