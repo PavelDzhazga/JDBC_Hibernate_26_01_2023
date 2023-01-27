@@ -20,7 +20,7 @@
         </plugins>
     </build>
 
-    <dependencies>
+     <dependencies>
 <!--         Ваши зависимости-->
          <!-- https://mvnrepository.com/artifact/junit/junit -->
          <dependency>
@@ -45,7 +45,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.6.3.Final</version>
+            <version>5.3.7.Final</version>
         </dependency>
 
         <dependency>
@@ -53,11 +53,6 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.25</version>
         </dependency>
-
-
-
-
-
 
 
     </dependencies>

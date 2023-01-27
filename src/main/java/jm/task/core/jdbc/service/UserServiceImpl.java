@@ -11,7 +11,6 @@ public class UserServiceImpl implements UserService {
 
     //UserDaoJDBCImpl userDaoJDBCImpl = new UserDaoJDBCImpl();
     UserDaoHibernateImpl userDaoHibernate = new UserDaoHibernateImpl();
-
     public void createUsersTable() {
         userDaoHibernate.createUsersTable();
     }
@@ -25,8 +24,8 @@ public class UserServiceImpl implements UserService {
         userDaoHibernate.saveUser(user);
     }
 
-    public void removeUserById(User user) {
-        userDaoHibernate.removeUserById(user);
+    public void removeUserById(Long id) {
+        userDaoHibernate.removeUserById(id);
     }
 
     public List<User> getAllUsers() {

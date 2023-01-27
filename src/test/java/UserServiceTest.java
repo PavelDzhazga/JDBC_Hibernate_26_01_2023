@@ -10,10 +10,10 @@ public class UserServiceTest {
     private final UserService userService = new UserServiceImpl();
 
     private final String name = "Ivan";
-    private final String lastName = "Ivanov";
+    private final String lastname = "Ivanov";
     private final byte age = 5;
 
-    User userTest = new User(name, lastName, age);
+    User userTest = new User(name, lastname, age);
 
     @Test
     public void dropUsersTable() {
@@ -45,7 +45,7 @@ public class UserServiceTest {
             User user = userService.getAllUsers().get(0);
 
             if (!name.equals(user.getName())
-                    || !lastName.equals(user.getLastName())
+                    || !lastname.equals(user.getLastName())
                     || age != user.getAge()
             ) {
                 Assert.fail("User был некорректно добавлен в базу данных");
@@ -61,8 +61,8 @@ public class UserServiceTest {
         try {
             userService.dropUsersTable();
             userService.createUsersTable();
-            userService.saveUser(new User(name, lastName, age));
-            userService.removeUserById(new User(name, lastName, age));
+            userService.saveUser(userTest);
+            userService.removeUserById(userTest.getId());
         } catch (Exception e) {
             Assert.fail("При тестировании удаления пользователя по id произошло исключение\n" + e);
         }
@@ -73,7 +73,7 @@ public class UserServiceTest {
         try {
             userService.dropUsersTable();
             userService.createUsersTable();
-            userService.saveUser(new User(name, lastName, age));
+            userService.saveUser(userTest);
             List<User> userList = userService.getAllUsers();
 
             if (userList.size() != 1) {
@@ -89,7 +89,7 @@ public class UserServiceTest {
         try {
             userService.dropUsersTable();
             userService.createUsersTable();
-            userService.saveUser(new User(name, lastName, age));
+            userService.saveUser(userTest);
             userService.cleanUsersTable();
 
             if (userService.getAllUsers().size() != 0) {

@@ -11,7 +11,7 @@ public interface UserService {
 
     void saveUser(User user);
 
-    void removeUserById(User user);
+    void removeUserById(Long id);
 
     List<User> getAllUsers();
 

@@ -13,7 +13,7 @@ public interface UserDao {
     void saveUser(User user);
 
 
-    void removeUserById(User user);
+    void removeUserById(Long id);
 
     List<User> getAllUsers() throws SQLException;
 
