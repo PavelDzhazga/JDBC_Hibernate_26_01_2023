@@ -2,6 +2,7 @@ package jm.task.core.jdbc.service;
 
 import jm.task.core.jdbc.model.User;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface UserService {
@@ -9,11 +10,11 @@ public interface UserService {
 
     void dropUsersTable();
 
-    void saveUser(User user);
+    void saveUser(String name, String lastName, byte age);
 
     void removeUserById(Long id);
 
-    List<User> getAllUsers();
+    List<User> getAllUsers() throws SQLException;
 
     void cleanUsersTable();
 }
