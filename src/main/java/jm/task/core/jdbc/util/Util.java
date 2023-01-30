@@ -20,30 +20,6 @@ import org.hibernate.service.ServiceRegistry;
 
 
 public class Util {
-    // реализуйте настройку соеденения с БД
-    private static final String url = "jdbc:mysql://localhost:3306/dzhazgappshema";
-    private static final String userName = "root";
-    private static final String passw = "root";
-    private static final String driver = "com.mysql.cj.jdbc.Driver";
-
-
-    public static Connection getConnection() {
-        Connection connection;
-        try {
-            Class.forName(driver);
-            connection = DriverManager.getConnection(url, userName, passw);
-            Statement statement = connection.createStatement();
-            if (!connection.isClosed()) {
-                System.out.println("Connection good");
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Connection ERROR");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException("Connection ERROR");
-        }
-        return connection;
-    }
-
 
 
 //Hibarnate
